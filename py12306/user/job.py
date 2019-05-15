@@ -181,9 +181,10 @@ class UserJob:
         获取加密后的浏览器特征 ID
         :return:
         """
-        params = {"algID": self.request_alg_id(), "timestamp": int(time.time() * 1000)}
-        params = dict(params, **self._get_hash_code_params())
-        response = self.session.get(API_GET_BROWSER_DEVICE_ID, params=params)
+        # params = {"algID": self.request_alg_id(), "timestamp": int(time.time() * 1000)}
+        # params = dict(params, **self._get_hash_code_params())
+        # response = self.session.get(API_GET_BROWSER_DEVICE_ID, params=params)
+        response = self.get_device_id()
         if response.text.find('callbackFunction') >= 0:
             result = response.text[18:-2]
             try:
@@ -194,6 +195,22 @@ class UserJob:
                 })
             except:
                 return False
+
+    def get_device_id(self):
+        # TODO 暂时写死
+        url = API_GET_BROWSER_DEVICE_ID + "?algID=9K6MUm5nyb&" \
+                                          "hashCode=d4C_NBkHpK_2qhhoNL56nUlakW02EwQSiGcmgbBWiho&" \
+                                          "FMQw=0&q4f3=zh-CN&VySQ=FGFknHQKQIW-LngmSLN1upK17QTWzkva&" \
+                                          "VPIf=1&custID=133&VEek=1&dzuS=0&yD16=0&" \
+                                          "EOQP=c227b88b01f5c513710d4b9f16a5ce52&" \
+                                          "jp76=d41d8cd98f00b204e9800998ecf8427e&hAqN=MacIntel&" \
+                                          "platform=WEB&ks0Q=d41d8cd98f00b204e9800998ecf8427e&" \
+                                          "TeRS=973x1680&tOHY=24xx1050x1680&Fvje=i1l1s1&q5aJ=-8&" \
+                                          "wNLf=99115dfb07133750ba677d055874de87&" \
+                                          "0aew=Mozilla%2f5.0+(Macintosh%3b+Intel+Mac+OS+X+10.14%3b+rv%3a67.0)+" \
+                                          "Gecko%2f20100101+Firefox%2f67.0&E3gR=2ee3ead433115e41434a3895c4d0a43b" \
+                                          "&timestamp=" + str(int(time.time() * 1000))
+        return self.session.get(url)
 
     def request_alg_id(self):
         response = self.session.get("https://kyfw.12306.cn/otn/HttpZF/GetJS")
