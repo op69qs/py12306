@@ -1,0 +1,31 @@
+FROM arm64v8/python:3.6.6-slim
+
+MAINTAINER <pjialin admin@pjialin.com>
+ENV TZ Asia/Shanghai
+
+RUN echo  "deb http://mirrors.ustc.edu.cn/debian stretch main contrib non-free\n\
+deb http://mirrors.ustc.edu.cn/debian stretch-updates main contrib non-free\n\
+deb http://mirrors.ustc.edu.cn/debian stretch-backports main contrib non-free\n\
+deb http://mirrors.ustc.edu.cn/debian-security/ stretch/updates main contrib non-free" > /etc/apt/sources.list && \
+echo  "[global]\n\
+trusted-host=mirrors.aliyun.com\n\
+index-url=http://mirrors.aliyun.com/pypi/simple" > /etc/pip.conf
+
+
+
+RUN apt-get update && apt-get install -y gcc libc-dev libxml2-dev libxslt-dev libz-dev
+
+WORKDIR /code
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+
+RUN mkdir -p /data/query /data/user
+VOLUME /data
+
+COPY . .
+
+COPY env.docker.py.example /config/env.py
+
+CMD [ "python", "main.py" , "-c", "/config/env.py"]
