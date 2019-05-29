@@ -198,18 +198,16 @@ class UserJob:
 
     def get_device_id(self):
         # TODO 暂时写死
-        url = API_GET_BROWSER_DEVICE_ID + "?algID=9K6MUm5nyb&" \
-                                          "hashCode=d4C_NBkHpK_2qhhoNL56nUlakW02EwQSiGcmgbBWiho&" \
-                                          "FMQw=0&q4f3=zh-CN&VySQ=FGFknHQKQIW-LngmSLN1upK17QTWzkva&" \
-                                          "VPIf=1&custID=133&VEek=1&dzuS=0&yD16=0&" \
-                                          "EOQP=c227b88b01f5c513710d4b9f16a5ce52&" \
-                                          "jp76=d41d8cd98f00b204e9800998ecf8427e&hAqN=MacIntel&" \
-                                          "platform=WEB&ks0Q=d41d8cd98f00b204e9800998ecf8427e&" \
-                                          "TeRS=973x1680&tOHY=24xx1050x1680&Fvje=i1l1s1&q5aJ=-8&" \
-                                          "wNLf=99115dfb07133750ba677d055874de87&" \
-                                          "0aew=Mozilla%2f5.0+(Macintosh%3b+Intel+Mac+OS+X+10.14%3b+rv%3a67.0)+" \
-                                          "Gecko%2f20100101+Firefox%2f67.0&E3gR=2ee3ead433115e41434a3895c4d0a43b" \
-                                          "&timestamp=" + str(int(time.time() * 1000))
+        url = API_GET_BROWSER_DEVICE_ID + "?algID=LViaqcvRbo&hashCode=fsW9VhS1MU0SpwVpUtcMYFCWOYGwFiuovrS2NZ42kPM&FMQw" \
+                                          "=0&q4f3=zh-CN&VPIf=1&custID=133&VEek=unknown&dzuS=0&yD16=0&EOQP" \
+                                          "=c227b88b01f5c513710d4b9f16a5ce52&lEnu=3232250774&jp76" \
+                                          "=52d67b2a5aa5e031084733d5006cc664&hAqN=MacIntel&platform=WEB&ks0Q" \
+                                          "=d22ca0b81584fbea62237b14bd04c866&TeRS=1050x1680&tOHY=24xx1050x1680&Fvje" \
+                                          "=i1l1o1s1&q5aJ=-8&wNLf=99115dfb07133750ba677d055874de87&0aew=Mozilla/5.0" \
+                                          "%20(Macintosh;%20Intel%20Mac%20OS%20X%2010_14_5)%20AppleWebKit/537.36%20(" \
+                                          "KHTML," \
+                                          "%20like%20Gecko)%20Chrome/75.0.3770.51%20Safari/537.36&E3gR" \
+                                          "=e64b4252f0e236f5ddd94b530dc03758&timestamp=" + str(int(time.time() * 1000))
         return self.session.get(url)
 
     def request_alg_id(self):
@@ -302,7 +300,8 @@ class UserJob:
         data_str_len = len(data_str)
         data_str_f = int(data_str_len / 3) if data_str_len % 3 == 0 else int(data_str_len / 3) + 1
         if data_str_len >= 3:
-            data_str = data_str[data_str_f:2*data_str_f] + data_str[2*data_str_f:data_str_len] + data_str[0: data_str_f]
+            data_str = data_str[data_str_f:2 * data_str_f] + data_str[2 * data_str_f:data_str_len] + data_str[
+                                                                                                     0: data_str_f]
         data_str = data_str[::-1]
         data_str_tmp = ""
         for e in range(0, len(data_str)):
