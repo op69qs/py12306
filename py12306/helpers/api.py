@@ -47,8 +47,8 @@ API_NOTIFICATION_BY_VOICE_CODE = 'http://ali-voice.showapi.com/sendVoice?'
 API_NOTIFICATION_BY_VOICE_CODE_DINGXIN = 'http://yuyin2.market.alicloudapi.com/dx/voice_notice'
 
 # API_FREE_CODE_QCR_API = 'http://60.205.200.159/api'  # 19-03-07 接口已失效
-# API_FREE_CODE_QCR_API = 'https://12306.jiedanba.cn/api/v2/getCheck'
-API_FREE_CODE_QCR_API = 'http://47.98.124.142:9082/api/v2/getCheck'
+# API_FREE_CODE_QCR_API = 'http://47.98.124.142:9082/api/v2/getCheck'
+API_FREE_CODE_QCR_API = 'https://12306.jiedanba.cn/api/v2/getCheck'
 API_FREE_CODE_QCR_API_CHECK = 'http://check.huochepiao.360.cn/img_vcode'
 
 API_CHECK_CDN_AVAILABLE = 'https://{}/otn/dynamicJs/omseuuq'
